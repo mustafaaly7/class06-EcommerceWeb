@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-
+import logo from "../images/logo.png"
 
 
 
@@ -15,7 +15,7 @@ function Header() {
                 <section className="md:flex lg:items-center relative py-3 lg:px-10 px-4 border-gray-200 border-b bg-white lg:min-h-[80px] max-lg:min-h-[60px]">
                     <Link to={"/"} className="max-sm:w-full max-sm:mb-3 shrink-0"> 
                         <img
-                            src="https://readymadeui.com/readymadeui.svg"
+                            src={logo}
                             alt="logo"
                             className="w-[160px]"
                         />
@@ -69,7 +69,7 @@ function Header() {
                                             data-original="#000000"
                                         />
                                     </svg>
-                                    Communty
+                                    About
                                 </li>
                                 <li className="max-lg:py-2 px-3 cursor-pointer">
                                     <span className="relative">
