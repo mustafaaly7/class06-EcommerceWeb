@@ -4,7 +4,7 @@
 
 
 function Chip({name, onclick,chosen}) {
-  console.log(chosen);
+  // console.log(chosen);
   
     return (
         <>
@@ -13,7 +13,7 @@ function Chip({name, onclick,chosen}) {
   <button
     type="button"
     onClick={onclick}
-    className={`
+    className={`${chosen ? "bg-blue-700 text-white" : "border border-blue-700 outline-none bg-transparent"}
     
       px-5 py-2.5 rounded-lg text-sm tracking-wider font-medium border border-blue-700 outline-none bg-transparent hover:bg-blue-700 text-blue-700 hover:text-white transition-all duration-300
        `}

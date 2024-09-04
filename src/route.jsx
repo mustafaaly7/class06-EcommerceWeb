@@ -3,6 +3,7 @@ import Header from "./components/header";
 import App from "./App";
 import { Products } from "./pages/products";
 import Notfound from "./pages/notfound";
+import { Product } from "./pages/product";
 
 function AppRouter() {
     return (
@@ -14,8 +15,8 @@ function AppRouter() {
 
                 <Route index element={<App />} />
                 <Route path="/products" element={<Products />} />
+                <Route  path="/product/:title/id/:id" element={<Product/>}/>
                 <Route path="*" element={<Notfound/>}/>
-                <Route />
                 <Route />
 
 
