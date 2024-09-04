@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/header";
 import App from "./App";
-import { Products } from "./pages/product";
+import { Products } from "./pages/products";
+import Notfound from "./pages/notfound";
 
 function AppRouter() {
     return (
@@ -13,7 +14,7 @@ function AppRouter() {
 
                 <Route index element={<App />} />
                 <Route path="/products" element={<Products />} />
-                <Route />
+                <Route path="*" element={<Notfound/>}/>
                 <Route />
                 <Route />
 
