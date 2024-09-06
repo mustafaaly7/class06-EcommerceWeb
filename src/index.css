@@ -1,3 +1,10 @@
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.entireLogin{
+    background-image: url(./images/Login-SignupBg.jpg);
+    
+}
