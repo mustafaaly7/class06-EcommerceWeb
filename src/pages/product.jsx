@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { ProductDetail } from "../components/productdetail"
 
 
@@ -8,6 +8,16 @@ import { ProductDetail } from "../components/productdetail"
 
 
 function Product() {
+  const navigate = useNavigate()
+  useEffect(()=>{
+
+      if(!localStorage.getItem("userId")){
+      alert("Please Login To Use This Page")
+navigate("/login")    
+ 
+        }
+
+  },[navigate])
   const { title, id } = useParams()
   const [singleproduct, setSingleProduct] = useState([])
   const [loader, setLoader] = useState(true)

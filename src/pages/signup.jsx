@@ -1,6 +1,11 @@
-import { Link } from "react-router-dom"
+import { Link, Navigate, useNavigate } from "react-router-dom"
+import { auth, createUserWithEmailAndPassword } from "../firebase.js";
+import { useState } from "react";
 
 function Signup() {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const navigate = useNavigate()
     return (
 
 
@@ -24,6 +29,7 @@ function Signup() {
                         <div className="my-5">
                             <h3 className="text-xl">PhoneNumber : :</h3>
                             <input
+
                                 className="border w-9/12 p-2 text-black"
                                 type="number"
                                 placeholder="Enter Your PhoneNumber Here"
@@ -34,6 +40,8 @@ function Signup() {
                         <div className="my-5">
                             <h3 className="text-xl">Email :</h3>
                             <input
+                                value={email}
+                                onChange={(e) => { setEmail(e.target.value) }}
                                 className="border w-9/12 p-2 text-black"
                                 type="text"
                                 placeholder="Enter Your Email Here"
@@ -43,6 +51,8 @@ function Signup() {
                         <div className="my-5">
                             <h3 className="text-xl">Password :</h3>
                             <input
+                                value={password}
+                                onChange={(e) => { setPassword(e.target.value) }}
                                 className="border w-9/12 p-2 text-black "
                                 type="password"
                                 placeholder="Enter Your Password Here"
@@ -53,9 +63,21 @@ function Signup() {
                             Already Have An Account? Login
                         </Link>
 
-                        
+
                         <br />
-                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">SignUp</button>
+                        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={async () => {
+                            try {
+                                
+                                const res = await createUserWithEmailAndPassword(auth, email, password)
+                                console.log(res);
+                                alert("USER SUCCESFULLY CREATED")
+                                navigate("/login")
+                            } catch (error) {
+                                console.log(error.message);
+                                
+                            }
+
+                        }}>SignUp</button>
 
                     </div>
                 </div>
