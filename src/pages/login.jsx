@@ -20,7 +20,7 @@ function Login() {
                             <h3 className="text-xl">Email :</h3>
                             <input
                                 value={email}
-                                onChange={(e)=>setEmail(e.target.value)}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="border w-9/12 p-2 text-black"
                                 type="text"
                                 placeholder="Enter Your Email Here"
@@ -31,7 +31,7 @@ function Login() {
                             <h3 className="text-xl">Password :</h3>
                             <input
                                 value={password}
-                                onChange={(e)=>setPassword(e.target.value)}
+                                onChange={(e) => setPassword(e.target.value)}
                                 className="border w-9/12 p-2 text-black "
                                 type="password"
                                 placeholder="Enter Your Password Here"
@@ -47,6 +47,12 @@ function Login() {
                         <Link >
                             <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={async () => {
                                 try {
+                                    if (email.length < 6 ||
+                                        password.length < 6) {
+                                        alert("Enter Correct Information")
+                                        return
+                                    }
+
 
                                     const res = await signInWithEmailAndPassword(auth, email, password)
                                     localStorage.setItem("userId", res.user.uid)

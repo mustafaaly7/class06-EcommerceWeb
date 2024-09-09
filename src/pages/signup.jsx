@@ -67,14 +67,21 @@ function Signup() {
                         <br />
                         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={async () => {
                             try {
-                                
+
+                                if (email.length < 6 ||
+                                    password.length < 6) {
+                                    alert("Please Enter Information")
+                                    return
+                                }
+
                                 const res = await createUserWithEmailAndPassword(auth, email, password)
                                 console.log(res);
                                 alert("USER SUCCESFULLY CREATED")
                                 navigate("/login")
                             } catch (error) {
-                                console.log(error.message);
-                                
+                                // console.log(error.message);
+                                alert(error.message)
+
                             }
 
                         }}>SignUp</button>
