@@ -1,11 +1,14 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { Link, Navigate, useNavigate } from "react-router-dom"
 import { auth, signInWithEmailAndPassword } from "../firebase"
+import { themecontext, ThemeContextProvider } from "../context/themecontext"
 
 function Login() {
+   
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
+
 
     return (
 
