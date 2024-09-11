@@ -8,3 +8,8 @@
     background-image: url(./images/Login-SignupBg.jpg);
     
 }
+.LoginBody{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}

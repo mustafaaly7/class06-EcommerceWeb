@@ -4,8 +4,8 @@ import App from "./App";
 import { Products } from "./pages/products";
 import Notfound from "./pages/notfound";
 import { Product } from "./pages/product";
-import Login from "./pages/login";
 import Signup from "./pages/signup";
+import { LoginPage } from "./pages/login";
 
 function AppRouter() {
     
@@ -19,7 +19,7 @@ function AppRouter() {
 
             
             <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<Signup />} />
 
                 <Route index element={<App />} />
