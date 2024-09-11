@@ -4,16 +4,16 @@ import { Chip } from "../components/chips";
 import { Link, useNavigate } from "react-router-dom";
 
 function Products() {
-    const navigate = useNavigate()
-    useEffect(()=>{
+//     const navigate = useNavigate()
+//     useEffect(()=>{
 
-        if(!localStorage.getItem("userId")){
-        alert("Please Login To Use This Page")
-navigate("/login")    
+//         if(!localStorage.getItem("userId")){
+//         alert("Please Login To Use This Page")
+// navigate("/login")    
    
-          }
+//           }
 
-    },[navigate])
+//     },[navigate])
     const [categories, setCategories] = useState([]);
     const [loader, setLoader] = useState(true);
     const [product, setProduct] = useState([]);

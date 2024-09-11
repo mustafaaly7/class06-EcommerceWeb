@@ -6,15 +6,9 @@ import { useNavigate } from 'react-router-dom'
 
 function App() {
   const navigate = useNavigate()
-  useEffect(()=>{
+  
 
-      if(!localStorage.getItem("userId")){
-      alert("Please Login To Use This Page")
-navigate("/login")    
  
-        }
-
-  },[navigate])
   const [product, setProduct] = useState([])
   const [loading, setLoading] = useState(true)
   useEffect(() => {

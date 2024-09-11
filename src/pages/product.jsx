@@ -9,15 +9,15 @@ import { ProductDetail } from "../components/productdetail"
 
 function Product() {
   const navigate = useNavigate()
-  useEffect(()=>{
+//   useEffect(()=>{
 
-      if(!localStorage.getItem("userId")){
-      alert("Please Login To Use This Page")
-navigate("/login")    
+//       if(!localStorage.getItem("userId")){
+//       alert("Please Login To Use This Page")
+// navigate("/login")    
  
-        }
+//         }
 
-  },[navigate])
+//   },[navigate])
   const { title, id } = useParams()
   const [singleproduct, setSingleProduct] = useState([])
   const [loader, setLoader] = useState(true)
