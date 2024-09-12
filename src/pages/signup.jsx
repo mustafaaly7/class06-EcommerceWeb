@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { auth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "../firebase";
+import { addDoc, auth, collection, createUserWithEmailAndPassword, db, signInWithEmailAndPassword } from "../firebase";
 
 
 function SignupPage() {
@@ -10,11 +10,12 @@ function SignupPage() {
     const [phoneNumber, setPhonenumber] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
-
     function SubmitHandler(e) {
         e.preventDefault()
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
+    createUserWithEmailAndPassword(auth, email, password)
+   
+   .then(() => {
+                
                 alert("User Successfully Created")
                 navigate("/login")
             })
@@ -22,6 +23,17 @@ function SignupPage() {
                 alert(error.message)
             })
 
+            try {
+                const docRef =  addDoc(collection(db, "users"), {
+                  name: fullName,
+                  emailAddress: email,
+                  phn: phoneNumber,
+                  
+                });
+                console.log("Document written with ID: ", docRef.id);
+              } catch (e) {
+                console.error("Error adding document: ", e);
+              }
 
     }
 
@@ -155,11 +167,12 @@ function SignupPage() {
                                 </div>
                                 <button
                                     type="submit"
-                                    onClick={() => {
+                                    onClick={async() => {
                                         if (email.length < 6 || password.length < 6) {
                                             alert("please Enter Correct Info")
                                             return
                                         }
+                                       
                                     }}
                                     className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                                 >
