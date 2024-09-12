@@ -1,5 +1,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../images/logo.png"
+import { useContext } from "react"
+import { userContext } from "../context/usercontext"
+import { auth, signOut } from "../firebase"
 
 
 
@@ -8,6 +11,7 @@ import logo from "../images/logo.png"
 
 function Header() {
     const navigate = useNavigate()
+    const { user } = useContext(userContext)
     return (
 
         <>
@@ -30,7 +34,7 @@ function Header() {
                         <div className="ml-auto max-lg:mt-4">
                             <ul className="flex items-center">
                                 <Link to="/products">
-                                    <li className="max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-[#333] cursor-pointer">
+                                    <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="20px"
@@ -57,9 +61,9 @@ function Header() {
                                     </li>
                                 </Link>
                                 <li className="max-sm:hidden flex text-[15px] max-lg:py-2 px-3 font-medium text-[#333] cursor-pointer">
-                                    
+
                                 </li>
-                                <li className="max-lg:py-2 px-3 cursor-pointer">
+                                {/* <li className="max-lg:py-2 px-3 cursor-pointer">
                                     <span className="relative">
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -77,21 +81,36 @@ function Header() {
                                             0
                                         </span>
                                     </span>
-                                </li>
-                                <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
-                                    <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
-                                       if(localStorage.getItem("userId")){
+                                </li> */}
+                                {user.userLogin ? (
 
-                                           localStorage.removeItem("userId")
-                                            alert("User Successfully Logged Out ")
+
+                                    <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
+                                        <h4>{user.email}</h4>
+                                        <button className=" mx-4 px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
+                                            signOut(auth)
                                             navigate("/login")
-                                       }else{
-                                        alert("Login First To SignOut")
-                                       }
-                                    }}>
-                                        Sign Out
-                                    </button>
-                                </li>
+                                        }}>
+
+
+                                            Sign Out
+                                        </button>
+                                    </li>
+                                ) : (
+                                    <li className="flex text-[15px] max-lg:py-2 px-3 hover:text-[#007bff] hover:fill-[#007bff]">
+                                        <button className="px-4 py-2 text-sm rounded font-semibold text-[#333] border-2 border-[#333] bg-transparent" onClick={() => {
+                                            navigate("/signup")
+                                        }}>
+
+
+                                            SignUp
+                                        </button>
+                                    </li>
+
+                                )}
+
+
+
                                 <li id="toggleOpen" className="lg:hidden">
                                     <button>
                                         <svg

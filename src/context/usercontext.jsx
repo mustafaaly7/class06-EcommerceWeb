@@ -18,6 +18,13 @@ onAuthStateChanged(auth,(user)=>{
             userLogin : true ,
             email :user.email
         })
+        
+    }
+    else{
+        setUser({
+            userLogin : false ,
+            email :""
+        })
     }
 })
 
